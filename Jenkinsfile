@@ -5,7 +5,9 @@ pipeline {
             steps{
                 // If Dockerfile exists -> Build Image with ${BUILD_NUMBER} as image tag
                 // else exit 1 with error message
+                script{
                 docker.build("newapp:${env.BUILD_NUMBER}")
+                }
             }
         }
         stage("Container-creation+tests"){
