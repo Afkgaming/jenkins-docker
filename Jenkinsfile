@@ -9,8 +9,8 @@ pipeline {
                 def newImage = docker.build("virusoo/newapp:${env.BUILD_NUMBER}")
                 
                     newImage.inside{
-                        sh 'service nginx start'
                         sh 'su root'
+                        sh 'service nginx start'
                         sh 'curl localhost'
                     }
                 }
