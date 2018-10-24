@@ -17,6 +17,7 @@ pipeline {
         stage("Container-creation+tests"){
             steps{
                 // run container with the new Image:${BUILD_NUMBER}
+                sh "echo 'Stage 2'"
             }
         }
         stage("push-image"){
