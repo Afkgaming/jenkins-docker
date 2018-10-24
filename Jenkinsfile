@@ -8,16 +8,16 @@ pipeline {
                 script{
                 def newImage = docker.build("virusoo/newapp:${env.BUILD_NUMBER}")
                 }
-                sh "docker run -p 1234:80 --name nginx-test -d --rm virusoo/newapp:${env.BUILD_NUMBER}"
-                sh "docker ps -a"
-                sh "curl 172.17.0.2"
-                sh "docker stop nginx-test"
+                
             }
         }
         stage("Container-creation+tests"){
             steps{
                 // run container with the new Image:${BUILD_NUMBER}
-                sh "echo 'Stage 2'"
+                sh "docker run -p 1234:80 --name nginx-test -d --rm virusoo/newapp:${env.BUILD_NUMBER}"
+                sh "docker ps -a"
+                sh "curl 172.17.0.2"
+                sh "docker stop nginx-test"
             }
         }
         stage("push-image"){
