@@ -20,7 +20,7 @@ pipeline {
             steps{
                 // push image to dockerHub
                 script{
-                newImage.push()
+                docker.push()
                 }
             }
         }
