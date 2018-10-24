@@ -8,12 +8,10 @@ pipeline {
                 script{
                 def newImage = docker.build("virusoo/newapp:${env.BUILD_NUMBER}")
                 newImage.inside{
-                    sh "docker ps -a"
                     sh "curl localhost"
                     sh "curl 172.17.0.2"
                 }
                 }
-                sh "docker ps -a"
                 sh "curl 172.17.0.2"
             }
         }
