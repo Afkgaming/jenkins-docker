@@ -1,11 +1,11 @@
 pipeline {
-    agent { dockerfile true }
+    agent any
     stages {
         stage("build-image"){
             steps{
                 // If Dockerfile exists -> Build Image with ${BUILD_NUMBER} as image tag
                 // else exit 1 with error message
-                sh "uname -a"
+                docker.build("newapp:${env.BUILD_NUMBER}")
             }
         }
         stage("Container-creation+tests"){
