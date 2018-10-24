@@ -7,6 +7,7 @@ pipeline {
                 // else exit 1 with error message
                 script{
                 def newImage = docker.build("virusoo/newapp:${env.BUILD_NUMBER}")
+                }
                 sh "docker run --name -p 1234:80 --name nginx-test -d virusoo/newapp:${env.BUILD_NUMBER}"
                 sh "docker ps -a"
                 sh "curl 172.17.0.2"
