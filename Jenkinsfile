@@ -5,7 +5,7 @@ pipeline {
             steps{
                 // If Dockerfile exists -> Build Image with ${BUILD_NUMBER} as image tag
                 // else exit 1 with error message
-
+                sh "uname -a"
             }
         }
         stage("Container-creation+tests"){
