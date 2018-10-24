@@ -1,3 +1,3 @@
-FROM ubuntu:latest
-RUN apt-get update && apt-get upgrade -y 
-CMD ["/bin/bash"]
+FROM nginx:latest
+COPY website/ /usr/share/nginx/html/
+EXPOSE 80
