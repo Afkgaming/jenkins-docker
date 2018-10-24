@@ -7,13 +7,16 @@ pipeline {
                 // else exit 1 with error message
                 script{
                 def newImage = docker.build("virusoo/newapp:${env.BUILD_NUMBER}")
+                
+                newImage.inside{
+                    curl localhost
+                }
                 }
             }
         }
         stage("Container-creation+tests"){
             steps{
                 // run container with the new Image:${BUILD_NUMBER}
-                sh "echo 'Stage 2'"
             }
         }
         stage("push-image"){
