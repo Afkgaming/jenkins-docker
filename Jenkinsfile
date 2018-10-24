@@ -16,7 +16,6 @@ pipeline {
                 sh "echo 'Stage 2'"
             }
         }
-        }
         stage("push-image"){
             steps{
                 // push image to dockerHub
