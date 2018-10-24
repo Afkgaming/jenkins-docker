@@ -19,7 +19,7 @@ pipeline {
         stage("push-image"){
             steps{
                 // push image to dockerHub
-                withDockerRegistry(credentialsId: 'docker-hub') {
+                withDockerRegistry(credentialsId: 'docker-hub', url: "") {
                     sh "docker push newapp:${env.BUILD_NUMBER}"
                     sh "echo 'image push successful!'"
                 }
