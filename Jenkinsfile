@@ -10,6 +10,7 @@ pipeline {
                 
                     newImage.inside{
                         sh 'service nginx start'
+                        sh 'su root'
                         sh 'curl localhost'
                     }
                 }
