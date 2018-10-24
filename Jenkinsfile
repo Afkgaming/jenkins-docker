@@ -1,11 +1,6 @@
 pipeline {
     agent any
     stages {
-        stage("checkout-scm"){
-            steps{
-                // pulling Repo
-            }
-        }
         stage("build-image"){
             steps{
                 // If Dockerfile exists -> Build Image with ${BUILD_NUMBER} as image tag
