@@ -20,7 +20,9 @@ pipeline {
             }
         }
         stage("push-image"){
-            // push image to dockerHub
+            steps{
+                // push image to dockerHub
+            }
         }
     }
 }
