@@ -6,7 +6,7 @@ pipeline {
                 // If Dockerfile exists -> Build Image with ${BUILD_NUMBER} as image tag
                 // else exit 1 with error message
                 script{
-                def newImage = docker.build("newapp:${env.BUILD_NUMBER}")
+                def newImage = docker.build("virusoo/newapp:${env.BUILD_NUMBER}")
                 }
             }
         }
@@ -20,7 +20,7 @@ pipeline {
             steps{
                 // push image to dockerHub
                 withDockerRegistry(credentialsId: 'docker-hub', url: "") {
-                    sh "docker push newapp:${env.BUILD_NUMBER}"
+                    sh "docker push virusoo/newapp:${env.BUILD_NUMBER}"
                     sh "echo 'image push successful!'"
                 }
             }
