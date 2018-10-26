@@ -25,6 +25,8 @@ pipeline {
                 // push image to dockerHub
                 withDockerRegistry(credentialsId: 'docker-hub', url: "") {
                     sh "docker push virusoo/newapp:${env.BUILD_NUMBER}"
+                    sh "docker tag virusoo/newapp:${env.BUILD_NUMBER} virusoo/newapp:latest"
+                    sh "docker push virusoo/newapp:latest"
                     sh "sleep 60s"
                     sh "echo 'image push successful!'"
                 }
