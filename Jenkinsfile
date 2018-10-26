@@ -17,6 +17,7 @@ pipeline {
                 sh "docker run -p 1234:80 --name nginx-test -d --rm virusoo/newapp:${env.BUILD_NUMBER}"
                 sh "docker ps -a"
                 sh "curl 172.17.0.2"
+                sh "sleep 120"
                 sh "docker stop nginx-test"
             }
         }
@@ -27,7 +28,6 @@ pipeline {
                     sh "docker push virusoo/newapp:${env.BUILD_NUMBER}"
                     sh "docker tag virusoo/newapp:${env.BUILD_NUMBER} virusoo/newapp:latest"
                     sh "docker push virusoo/newapp:latest"
-                    sh "sleep 60s"
                     sh "echo 'image push successful!'"
                 }
             }
