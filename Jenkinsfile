@@ -32,5 +32,7 @@ pipeline {
                 }
             }
         }
+	stage("trigger-job"){
+		build job: 'dockerfile-deploy'
     }
 }
