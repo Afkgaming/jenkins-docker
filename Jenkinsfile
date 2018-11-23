@@ -16,7 +16,7 @@ pipeline {
                 // run container with the new Image:${BUILD_NUMBER}
                 sh "docker run -p 1234:80 --name nginx-test -d --rm virusoo/newapp:${env.BUILD_NUMBER}"
                 sh "docker ps -a"
-                sh "curl 172.17.0.2"
+                sh "curl localhost:1234"
                 sh "sleep 120"
                 sh "docker stop nginx-test"
             }
